@@ -1,6 +1,6 @@
 # Todos
 
-Open [http://localhost:3000](http://localhost:3000)
+Open [localhost](http://localhost:3000)
 
 **_Use:_**
 
@@ -15,6 +15,11 @@ Open [http://localhost:3000](http://localhost:3000)
 - Redux
 - React Redux
 - Redux Devtools Extension
+- Material-UI
+- axios
+- Classnames
+- react-router-dom
+- shortid
 
 ```
 cd documents/github/todos
