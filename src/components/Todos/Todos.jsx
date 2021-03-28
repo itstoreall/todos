@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import { connect } from 'react-redux';
+import todosOperations from '../../redux/todos/todos-operations';
 import Stats from './TodoStats';
 import TodoList from './TodoList.container';
 import TodoEditor from './TodoEditor';
@@ -12,6 +14,10 @@ class Todos extends Component {
   state = {
     showModal: false,
   };
+
+  componentDidMount() {
+    this.props.fetchTodos();
+  }
 
   toggleModal = () => {
     this.setState(({ showModal }) => ({
@@ -58,4 +64,8 @@ class Todos extends Component {
   }
 }
 
-export default Todos;
+const mapDispatchToProps = dispatch => ({
+  fetchTodos: () => dispatch(todosOperations.fetchTodos),
+});
+
+export default connect(null, mapDispatchToProps)(Todos);

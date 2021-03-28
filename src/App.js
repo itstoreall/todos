@@ -1,13 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import shortid from 'shortid';
 import Todos from './components/Todos';
 import './components/Todos/TodosStyles.scss';
-import shortid from 'shortid';
 
-const App = () => {
+const App = ({ isLoadingTodos }) => {
   return (
     <section className="section">
       <div className="container">
-        <h1>Todos View Redux</h1>
+        <h1>
+          Todos View Redux
+          {isLoadingTodos && <span className="Loading"> Loading...</span>}
+        </h1>
         <Todos />
 
         <ul className="UseList">
@@ -36,4 +40,8 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = state => ({
+  isLoadingTodos: state.todos.loading,
+});
+
+export default connect(mapStateToProps, null)(App);

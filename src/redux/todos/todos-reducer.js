@@ -2,30 +2,45 @@ import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 // import actions from './todos-actions';
 import {
+  fetchTodosRequest,
+  fetchTodosSuccess,
+  fetchTodosError,
   addTodoRequest,
   addTodoSuccess,
   addTodoError,
-  deleteTodo,
+  deleteTodoRequest,
+  deleteTodoSuccess,
+  deleteTodoError,
   changeFilter,
-  toggleCompleted,
+  toggleCompletedRequest,
+  toggleCompletedSuccess,
+  toggleCompletedError,
 } from './todos-actions';
 
 // Items
 const items = createReducer([], {
+  [fetchTodosSuccess]: (_, { payload }) => payload,
   [addTodoSuccess]: (state, { payload }) => [...state, payload],
-  [toggleCompleted]: (state, { payload }) =>
-    state.map(todo =>
-      todo.id === payload ? { ...todo, completed: !todo.completed } : todo,
-    ),
-  [deleteTodo]: (state, { payload }) =>
+  [deleteTodoSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
+  [toggleCompletedSuccess]: (state, { payload }) =>
+    state.map(todo => (todo.id === payload.id ? payload : todo)),
 });
 
 // Loading
 const loading = createReducer(false, {
+  [fetchTodosRequest]: () => true,
+  [fetchTodosSuccess]: () => false,
+  [fetchTodosError]: () => false,
   [addTodoRequest]: () => true,
   [addTodoSuccess]: () => false,
   [addTodoError]: () => false,
+  [deleteTodoRequest]: () => true,
+  [deleteTodoSuccess]: () => false,
+  [deleteTodoError]: () => false,
+  [toggleCompletedRequest]: () => true,
+  [toggleCompletedSuccess]: () => false,
+  [toggleCompletedError]: () => false,
 });
 
 // Filter

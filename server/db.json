@@ -1,34 +1,19 @@
 {
   "todos": [
     {
-      "id": "id-1",
-      "text": "React",
-      "completed": true
-    },
-    {
-      "id": "id-2",
-      "text": "Router",
-      "completed": true
-    },
-    {
-      "text": "Redux",
+      "text": "Todo 1",
       "completed": false,
-      "id": "id-3"
+      "id": 1
     },
     {
-      "text": "csdcs",
-      "completed": false,
-      "id": "eFQge3E"
+      "text": "Todo 2",
+      "completed": true,
+      "id": 2
     },
     {
-      "text": "ff",
+      "text": "Todo 3",
       "completed": false,
-      "id": "NS1xljU"
-    },
-    {
-      "text": "wcewe",
-      "completed": false,
-      "id": "LkPM05T"
+      "id": 3
     }
   ]
 }
