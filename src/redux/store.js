@@ -1,11 +1,18 @@
-import { createStore, combineReducers } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+// import { composeWithDevTools } from 'redux-devtools-extension';
+// import logger from 'redux-logger';
 import todosReducer from './todos/todos-reducer';
 
-const rootReducer = combineReducers({
-  todos: todosReducer,
-});
+console.log(getDefaultMiddleware());
 
-const store = createStore(rootReducer, composeWithDevTools());
+// const middleware = [...getDefaultMiddleware(), logger]; // logger
+
+const store = configureStore({
+  reducer: {
+    todos: todosReducer,
+  },
+  // middleware, // logger
+  devTools: process.env.NODE_ENV === 'development', // hide Devtools
+});
 
 export default store;

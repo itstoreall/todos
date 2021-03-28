@@ -25,6 +25,7 @@ const App = () => {
           <li>use Classnames</li>
           <li>use react-router-dom</li>
           <li>use shortid</li>
+          <li>use Redux Toolkit</li>
         </ul>
       </div>
     </section>

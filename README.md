@@ -20,6 +20,8 @@ Open [localhost](http://localhost:3000)
 - Classnames
 - react-router-dom
 - shortid
+- Redux Toolkit
+- Logger for Redux
 
 ```
 cd documents/github/todos
