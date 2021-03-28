@@ -26,9 +26,11 @@ class TodoEditor extends Component {
   // Submit by Button
   handleSubmit = e => {
     e.preventDefault();
+
     this.props.onSubmit(this.state.message);
+    this.props.onCloseModal();
+
     this.setState({ message: '' });
-    this.props.closeModal();
   };
 
   // Submit by Enter

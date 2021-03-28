@@ -22,7 +22,7 @@ const TodoItem = ({ text, completed, onToggleCompleted, onDelete }) => {
         type="button"
         className="TodoList__btn"
         onClick={onDelete}
-        // disabled={!completed}
+        disabled={!completed}
         color="primary"
         aria-label="delete todo"
         component="span"

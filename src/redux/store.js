@@ -1,15 +1,15 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 // import { composeWithDevTools } from 'redux-devtools-extension';
-// import logger from 'redux-logger';
+import logger from 'redux-logger';
 import todosReducer from './todos/todos-reducer';
 
-// const middleware = [...getDefaultMiddleware(), logger]; // logger
+const middleware = [...getDefaultMiddleware(), logger]; // logger
 
 const store = configureStore({
   reducer: {
     todos: todosReducer,
   },
-  // middleware, // logger
+  middleware, // logger
   devTools: process.env.NODE_ENV === 'development', // hide Devtools
 });
 

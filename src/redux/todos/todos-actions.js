@@ -10,5 +10,6 @@ const addTodo = createAction('todos/add', text => ({
 }));
 const deleteTodo = createAction('todos/delete');
 const changeFilter = createAction('todos/changeFilter');
+const toggleCompleted = createAction('todos/toggleCompleted');
 
-export default { addTodo, deleteTodo, changeFilter }; // eslint-disable-line
+export default { addTodo, deleteTodo, changeFilter, toggleCompleted }; // eslint-disable-line

@@ -1,11 +1,12 @@
 import { Component } from 'react';
+import Stats from './TodoStats';
 import TodoList from './TodoList';
 import TodoEditor from './TodoEditor';
 import TodoFilter from './TodoFilter';
 import { Button, IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import Modal from '../Modal';
-import todosApi from './utils/todos-api';
+// import todosApi from './utils/todos-api';
 import './TodosStyles.scss';
 
 class TodosViewRedux extends Component {
@@ -33,29 +34,19 @@ class TodosViewRedux extends Component {
   // }
 
   // Toggle Completed (false/true)
-  toggleCompleted = todoId => {
-    const todo = this.state.todos.find(({ id }) => id === todoId);
-    const { completed } = todo;
-    const update = { completed: !completed };
+  // toggleCompleted = todoId => {
+  //   const todo = this.state.todos.find(({ id }) => id === todoId);
+  //   const { completed } = todo;
+  //   const update = { completed: !completed };
 
-    todosApi.updateTodo(todoId, update).then(updatedTodo => {
-      this.setState(({ todos }) => ({
-        todos: todos.map(todo =>
-          todo.id === updatedTodo.id ? updatedTodo : todo,
-        ),
-      }));
-    });
-  };
-
-  // Total Completed
-  calculateCompletedTodo = () => {
-    const { todos } = this.state;
-
-    return todos.reduce(
-      (total, todo) => (todo.completed ? total + 1 : total),
-      0,
-    );
-  };
+  //   todosApi.updateTodo(todoId, update).then(updatedTodo => {
+  //     this.setState(({ todos }) => ({
+  //       todos: todos.map(todo =>
+  //         todo.id === updatedTodo.id ? updatedTodo : todo,
+  //       ),
+  //     }));
+  //   });
+  // };
 
   // Toggle Modal
   toggleModal = () => {
@@ -76,16 +67,10 @@ class TodosViewRedux extends Component {
 
   render() {
     const { showModal } = this.state;
-    // const TotalTodoCount = todos.length;
-    // const completedTodoCount = this.calculateCompletedTodo();
 
     return (
       <>
-        {/* <div>
-          <p>Total: {TotalTodoCount}</p>
-          <p>Completed: {completedTodoCount}</p>
-        </div> */}
-
+        <Stats />
         <Button
           className="ModaOpen__btn"
           onClick={this.toggleModal}
@@ -108,7 +93,7 @@ class TodosViewRedux extends Component {
                 <CloseIcon />
               </IconButton>
             </span>
-            <TodoEditor closeModal={this.toggleModal} />
+            <TodoEditor onCloseModal={this.toggleModal} />
           </Modal>
         )}
 

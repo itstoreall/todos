@@ -4,12 +4,16 @@ import actions from './todos-actions';
 
 const items = createReducer([], {
   [actions.addTodo]: (state, { payload }) => [...state, payload],
+  [actions.toggleCompleted]: (state, { payload }) =>
+    state.map(todo =>
+      todo.id === payload ? { ...todo, completed: !todo.completed } : todo,
+    ),
   [actions.deleteTodo]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
 });
 
 const filter = createReducer('', {
-  [actions.changeFilter]: (state, { payload }) => payload,
+  [actions.changeFilter]: (_, { payload }) => payload,
 });
 
 export default combineReducers({ items, filter });
