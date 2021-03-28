@@ -1,6 +1,7 @@
 import React from 'react';
 import Todos from './components/Todos';
 import './components/Todos/TodosStyles.scss';
+import shortid from 'shortid';
 
 const App = () => {
   return (
@@ -24,7 +25,7 @@ const App = () => {
           <li>use axios</li>
           <li>use Classnames</li>
           <li>use react-router-dom</li>
-          <li>use shortid</li>
+          <li>use shortid - id: {shortid.generate()}</li>
           <li>use Redux Toolkit</li>
           <li>use Logger for Redux</li>
           <li>use Redux Persist</li>

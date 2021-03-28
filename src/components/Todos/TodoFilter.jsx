@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import todosActions from '../../redux/todos/todos-actions';
+import { changeFilter } from '../../redux/todos/todos-actions';
 import { TextField } from '@material-ui/core';
 import './TodosStyles.scss';
 
@@ -25,7 +25,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchtoProps = dispatch => ({
-  onChange: e => dispatch(todosActions.changeFilter(e.target.value)),
+  onChange: e => dispatch(changeFilter(e.target.value)),
 });
 
 export default connect(mapStateToProps, mapDispatchtoProps)(TodoFilter);
