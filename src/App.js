@@ -28,6 +28,7 @@ const App = () => {
           <li>use Redux Toolkit</li>
           <li>use Logger for Redux</li>
           <li>use Redux Persist</li>
+          <li>use JSON Server</li>
         </ul>
       </div>
     </section>

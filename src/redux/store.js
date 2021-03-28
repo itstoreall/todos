@@ -1,5 +1,41 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import {
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import logger from 'redux-logger';
+import todosReducer from './todos/todos-reducer';
+
+const middleware = [
+  ...getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
+  logger,
+];
+
+const store = configureStore({
+  reducer: {
+    todos: todosReducer,
+  },
+  middleware, // logger
+  devTools: process.env.NODE_ENV !== 'production', // hide Devtools
+});
+
+// const persistor = persistStore(store);
+
+export default store;
+
+/* ================================================
+// ** localStorage (completed module)
+
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import {
   persistStore,
   persistReducer,
   FLUSH,
@@ -34,9 +70,11 @@ const store = configureStore({
     todos: persistReducer(todosPersistConfig, todosReducer),
   },
   middleware, // logger
-  devTools: process.env.NODE_ENV === 'development', // hide Devtools
+  devTools: process.env.NODE_ENV !== 'production', // hide Devtools
 });
 
 const persistor = persistStore(store);
 
 export default { store, persistor }; // eslint-disable-line
+
+// ------------------------------------------------- */

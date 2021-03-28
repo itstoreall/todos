@@ -1,0 +1,21 @@
+{
+  "todos": [
+    {
+      "id": "id-1",
+      "text": "React",
+      "completed": true,
+      "isDone": true
+    },
+    {
+      "id": "id-2",
+      "text": "Router",
+      "completed": true,
+      "isDone": true
+    },
+    {
+      "text": "Redux",
+      "completed": false,
+      "id": "O967gnB"
+    }
+  ]
+}
