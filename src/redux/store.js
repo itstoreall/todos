@@ -3,8 +3,6 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 // import logger from 'redux-logger';
 import todosReducer from './todos/todos-reducer';
 
-console.log(getDefaultMiddleware());
-
 // const middleware = [...getDefaultMiddleware(), logger]; // logger
 
 const store = configureStore({

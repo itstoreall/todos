@@ -28,13 +28,14 @@ class TodoEditor extends Component {
     e.preventDefault();
     this.props.onSubmit(this.state.message);
     this.setState({ message: '' });
+    this.props.closeModal();
   };
 
   // Submit by Enter
-  handleKeyDown = e => {
-    const { message } = this.state;
-    e.code === 'Enter' && message !== '' && this.props.onSubmit(message);
-  };
+  // handleKeyDown = e => {
+  //   const { message } = this.state;
+  //   e.code === 'Enter' && message !== '' && this.props.onSubmit(message);
+  // };
 
   render() {
     return (

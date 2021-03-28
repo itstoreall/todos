@@ -108,7 +108,7 @@ class TodosViewRedux extends Component {
                 <CloseIcon />
               </IconButton>
             </span>
-            <TodoEditor />
+            <TodoEditor closeModal={this.toggleModal} />
           </Modal>
         )}
 

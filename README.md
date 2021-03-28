@@ -1,4 +1,4 @@
-# Todos
+# Todos (Redux Toolkit)
 
 Open [localhost](http://localhost:3000)
 
