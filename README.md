@@ -22,6 +22,7 @@ Open [localhost](http://localhost:3000)
 - shortid
 - Redux Toolkit
 - Logger for Redux
+- Redux Persist
 
 ```
 cd documents/github/todos

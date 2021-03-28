@@ -8,36 +8,30 @@ class TodoEditor extends Component {
     message: '',
   };
 
-  // addEventListener keydown
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeyDown);
   }
 
-  // removeEventListener keydown
   componentWillUnmount() {
     window.removeEventListener('keydown', this.handleKeyDown);
   }
 
-  // Input value
   handleChange = e => {
     this.setState({ message: e.currentTarget.value });
   };
 
-  // Submit by Button
   handleSubmit = e => {
     e.preventDefault();
 
-    this.props.onSubmit(this.state.message);
-    this.props.onCloseModal();
+    if (this.state.message !== '') {
+      this.props.onSubmit(this.state.message);
+      this.props.onCloseModal();
+      this.setState({ message: '' });
+      return;
+    }
 
-    this.setState({ message: '' });
+    alert('Заполни текст Todo');
   };
-
-  // Submit by Enter
-  // handleKeyDown = e => {
-  //   const { message } = this.state;
-  //   e.code === 'Enter' && message !== '' && this.props.onSubmit(message);
-  // };
 
   render() {
     return (

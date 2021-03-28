@@ -26,6 +26,8 @@ const App = () => {
           <li>use react-router-dom</li>
           <li>use shortid</li>
           <li>use Redux Toolkit</li>
+          <li>use Logger for Redux</li>
+          <li>use Redux Persist</li>
         </ul>
       </div>
     </section>

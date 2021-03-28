@@ -1,68 +1,22 @@
 import { Component } from 'react';
 import Stats from './TodoStats';
-import TodoList from './TodoList';
+import TodoList from './TodoList.container';
 import TodoEditor from './TodoEditor';
 import TodoFilter from './TodoFilter';
 import { Button, IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import Modal from '../Modal';
-// import todosApi from './utils/todos-api';
 import './TodosStyles.scss';
 
-class TodosViewRedux extends Component {
+class Todos extends Component {
   state = {
     showModal: false,
   };
 
-  // Did Mount
-  // componentDidMount() {
-  //   // GET todos
-  //   todosApi
-  //     .fetchTodos()
-  //     .then((todos) => this.setState({ todos }))
-  //     .catch((error) => console.log(error));
-  // }
-
-  // Did Update
-  // componentDidUpdate(prevProps, prevState) {
-  //   const nextTodos = this.state.todos;
-  //   const prevTodos = prevState.todos;
-
-  //   // Сохраняет todos в localStorage после проверки обновления
-  //   nextTodos !== prevTodos &&
-  //     localStorage.setItem('todos', JSON.stringify(nextTodos));
-  // }
-
-  // Toggle Completed (false/true)
-  // toggleCompleted = todoId => {
-  //   const todo = this.state.todos.find(({ id }) => id === todoId);
-  //   const { completed } = todo;
-  //   const update = { completed: !completed };
-
-  //   todosApi.updateTodo(todoId, update).then(updatedTodo => {
-  //     this.setState(({ todos }) => ({
-  //       todos: todos.map(todo =>
-  //         todo.id === updatedTodo.id ? updatedTodo : todo,
-  //       ),
-  //     }));
-  //   });
-  // };
-
-  // Toggle Modal
   toggleModal = () => {
     this.setState(({ showModal }) => ({
       showModal: !showModal,
     }));
-  };
-
-  // Input Value
-  handleInputChange = e => {
-    this.setState({ inputValue: e.currentTarget.value });
-  };
-
-  // Checked
-  handleLicenseChange = e => {
-    this.setState({ license: e.currentTarget.checked });
   };
 
   render() {
@@ -104,4 +58,4 @@ class TodosViewRedux extends Component {
   }
 }
 
-export default TodosViewRedux;
+export default Todos;
