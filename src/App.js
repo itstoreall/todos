@@ -34,6 +34,7 @@ const App = ({ isLoadingTodos }) => {
           <li>use Logger for Redux</li>
           <li>use Redux Persist</li>
           <li>use JSON Server</li>
+          <li>use Reselect (from Toolkit)</li>
         </ul>
       </div>
     </section>

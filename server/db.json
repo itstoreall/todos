@@ -2,17 +2,17 @@
   "todos": [
     {
       "text": "Todo 1",
-      "completed": false,
+      "completed": true,
       "id": 1
     },
     {
       "text": "Todo 2",
-      "completed": true,
+      "completed": false,
       "id": 2
     },
     {
       "text": "Todo 3",
-      "completed": false,
+      "completed": true,
       "id": 3
     }
   ]

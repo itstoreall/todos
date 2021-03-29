@@ -24,6 +24,7 @@ Open [localhost](http://localhost:3000)
 - Logger for Redux
 - Redux Persist
 - JSON Server (server)
+- Reselect (from Toolkit)
 
 ```
 cd documents/github/todos
