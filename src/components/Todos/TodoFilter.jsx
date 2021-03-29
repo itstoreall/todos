@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { changeFilter } from '../../redux/todos/todos-actions';
+import todosSelectors from '../../redux/todos/todos-selectors';
 import { TextField } from '@material-ui/core';
 import './TodosStyles.scss';
 
@@ -21,7 +22,7 @@ const TodoFilter = ({ value, onChange }) => {
 };
 
 const mapStateToProps = state => ({
-  value: state.todos.filter,
+  value: todosSelectors.getFilter(state),
 });
 
 const mapDispatchtoProps = dispatch => ({

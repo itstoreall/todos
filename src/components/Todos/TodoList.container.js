@@ -1,17 +1,18 @@
 import { connect } from 'react-redux';
 import todosOperations from '../../redux/todos/todos-operations';
+import todosSelectors from '../../redux/todos/todos-selectors';
 import TodoList from './TodoList';
 
-const getVisibleTodos = (allTodos, filter) => {
-  const normalizedFilter = filter.toLowerCase();
+// const getVisibleTodos = (allTodos, filter) => {
+//   const normalizedFilter = filter.toLowerCase();
 
-  return allTodos.filter(({ text }) =>
-    text.toLowerCase().includes(normalizedFilter),
-  );
-};
+//   return allTodos.filter(({ text }) =>
+//     text.toLowerCase().includes(normalizedFilter),
+//   );
+// };
 
-const mapStateToProps = ({ todos: { items, filter } }) => ({
-  todos: getVisibleTodos(items, filter),
+const mapStateToProps = state => ({
+  todos: todosSelectors.getVisibleTodos(state),
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import todosOperations from '../../redux/todos/todos-operations';
+import todosSelectors from '../../redux/todos/todos-selectors';
 import Stats from './TodoStats';
 import TodoList from './TodoList.container';
 import TodoEditor from './TodoEditor';
@@ -16,7 +17,6 @@ class Todos extends Component {
   };
 
   componentDidMount() {
-    console.log('componentDidMount');
     this.props.fetchTodos();
   }
 
@@ -65,8 +65,12 @@ class Todos extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  isLoadingTodos: todosSelectors.getLoading(state),
+});
+
 const mapDispatchToProps = dispatch => ({
   fetchTodos: () => dispatch(todosOperations.fetchTodos),
 });
 
-export default connect(null, mapDispatchToProps)(Todos);
+export default connect(mapStateToProps, mapDispatchToProps)(Todos);
