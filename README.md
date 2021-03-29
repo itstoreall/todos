@@ -23,7 +23,7 @@ Open [localhost](http://localhost:3000)
 - Redux Toolkit
 - Logger for Redux
 - Redux Persist
-- JSON Server
+- JSON Server (server)
 
 ```
 cd documents/github/todos

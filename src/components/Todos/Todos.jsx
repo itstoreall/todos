@@ -16,6 +16,7 @@ class Todos extends Component {
   };
 
   componentDidMount() {
+    console.log('componentDidMount');
     this.props.fetchTodos();
   }
 
