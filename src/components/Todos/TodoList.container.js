@@ -1,15 +1,6 @@
 import { connect } from 'react-redux';
-import todosOperations from '../../redux/todos/todos-operations';
-import todosSelectors from '../../redux/todos/todos-selectors';
+import { todosOperations, todosSelectors } from '../../redux/todos';
 import TodoList from './TodoList';
-
-// const getVisibleTodos = (allTodos, filter) => {
-//   const normalizedFilter = filter.toLowerCase();
-
-//   return allTodos.filter(({ text }) =>
-//     text.toLowerCase().includes(normalizedFilter),
-//   );
-// };
 
 const mapStateToProps = state => ({
   todos: todosSelectors.getVisibleTodos(state),

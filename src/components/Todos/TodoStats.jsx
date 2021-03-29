@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import todosSelectors from '../../redux/todos/todos-selectors';
+import { todosSelectors } from '../../redux/todos';
 
 const Stats = ({ total, completed }) => {
   return (
@@ -13,9 +13,6 @@ const Stats = ({ total, completed }) => {
     </div>
   );
 };
-
-// const getCompletedCount = todos =>
-//   todos.reduce((total, todo) => (todo.completed ? total + 1 : total), 0);
 
 const mapStateToProps = state => ({
   total: todosSelectors.getTotalTodoCount(state),

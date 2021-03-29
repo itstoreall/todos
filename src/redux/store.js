@@ -8,7 +8,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import logger from 'redux-logger';
-import todosReducer from './todos/todos-reducer';
+import { todosReducer } from './todos';
 
 const middleware = [
   ...getDefaultMiddleware({

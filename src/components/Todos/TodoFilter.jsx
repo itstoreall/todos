@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeFilter } from '../../redux/todos/todos-actions';
-import todosSelectors from '../../redux/todos/todos-selectors';
+import { changeFilter, todosSelectors } from '../../redux/todos';
 import { TextField } from '@material-ui/core';
 import './TodosStyles.scss';
 
