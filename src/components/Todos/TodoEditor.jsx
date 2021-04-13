@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import todosOperations from '../../redux/todos/todos-operations';
 import { Button, TextField } from '@material-ui/core';
@@ -12,22 +12,25 @@ export default function TodoEditor({ onCloseModal }) {
     inputRef.current.focus();
   });
 
-  const handleChange = e => {
+  // useCallback
+  const handleChange = useCallback(e => {
     setMessage(e.currentTarget.value);
-  };
+  }, []);
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  // useCallback
+  const handleSubmit = useCallback(
+    e => {
+      e.preventDefault();
 
-    if (message !== '') {
+      if (message === '') {
+        alert('Заполни текст Todo');
+      }
       dispatch(todosOperations.addTodo(message));
       onCloseModal();
       setMessage('');
-      return;
-    }
-
-    alert('Заполни текст Todo');
-  };
+    },
+    [dispatch, message, onCloseModal],
+  );
 
   return (
     <form className="TodoEditor" onSubmit={handleSubmit}>
@@ -40,7 +43,6 @@ export default function TodoEditor({ onCloseModal }) {
           label="Todo text"
           multiline
           rows={2}
-          // defaultValue="Default Value"
           variant="outlined"
           inputRef={inputRef}
         />
