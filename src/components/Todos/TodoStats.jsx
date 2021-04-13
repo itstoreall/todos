@@ -1,7 +1,10 @@
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { todosSelectors } from '../../redux/todos';
 
-const Stats = ({ total, completed }) => {
+export default function Stats() {
+  const total = useSelector(todosSelectors.getTotalTodoCount);
+  const completed = useSelector(todosSelectors.getCompletedTodoCount);
+
   return (
     <div>
       <p>
@@ -12,11 +15,4 @@ const Stats = ({ total, completed }) => {
       </p>
     </div>
   );
-};
-
-const mapStateToProps = state => ({
-  total: todosSelectors.getTotalTodoCount(state),
-  completed: todosSelectors.getCompletedTodoCount(state),
-});
-
-export default connect(mapStateToProps)(Stats);
+}

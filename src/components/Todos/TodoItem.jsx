@@ -1,10 +1,14 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { todosOperations } from '../../redux/todos';
 import { IconButton } from '@material-ui/core';
 import DeleteTwoToneIcon from '@material-ui/icons/DeleteTwoTone';
 import Checkbox from '@material-ui/core/Checkbox';
 import './TodosStyles.scss';
 
-const TodoItem = ({ text, completed, onToggleCompleted, onDelete }) => {
+const TodoItem = ({ id, text, completed }) => {
+  const dispatch = useDispatch();
+
   return (
     <>
       <label>
@@ -12,7 +16,14 @@ const TodoItem = ({ text, completed, onToggleCompleted, onDelete }) => {
           type="checkbox"
           className="TodoList__checkbox"
           checked={completed}
-          onChange={onToggleCompleted}
+          onChange={() =>
+            dispatch(
+              todosOperations.toggleCompleted({
+                id,
+                completed: !completed,
+              }),
+            )
+          }
           color="primary"
           inputProps={{ 'aria-label': 'secondary checkbox' }}
         />
@@ -21,7 +32,7 @@ const TodoItem = ({ text, completed, onToggleCompleted, onDelete }) => {
       <IconButton
         type="button"
         className="TodoList__btn"
-        onClick={onDelete}
+        onClick={() => dispatch(todosOperations.deleteTodo(id))}
         disabled={!completed}
         color="primary"
         aria-label="delete todo"

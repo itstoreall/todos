@@ -13,7 +13,7 @@ const getTotalTodoCount = state => {
 };
 
 const getCompletedTodoCount = createSelector([getAllTodos], todos => {
-  console.log('Высчитывает новое кол-во Completed Todos ');
+  // console.log('Высчитывает новое кол-во Completed Todos ');
   return todos.reduce((total, todo) => (todo.completed ? total + 1 : total), 0);
 });
 
@@ -21,7 +21,7 @@ const getVisibleTodos = createSelector(
   [getAllTodos, getFilter],
   (todos, filter) => {
     const normalizedFilter = filter.toLowerCase();
-    console.log('Составлят новый массив видимых Todos');
+    // console.log('Составлят новый массив видимых Todos');
     return todos.filter(({ text }) =>
       text.toLowerCase().includes(normalizedFilter),
     );

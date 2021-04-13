@@ -1,9 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 import TodoItem from './TodoItem';
+import { todosSelectors } from '../../redux/todos';
 import './TodosStyles.scss';
 
-const TodoList = ({ todos, onDeleteTodo, onToggleCompleted }) => {
+const TodoList = () => {
+  const todos = useSelector(todosSelectors.getVisibleTodos);
+
   return (
     <ul className="TodoList">
       {todos.map(({ id, text, completed }) => {
@@ -14,14 +18,7 @@ const TodoList = ({ todos, onDeleteTodo, onToggleCompleted }) => {
               'TodoList__item--completed': completed,
             })}
           >
-            <TodoItem
-              text={text}
-              completed={completed}
-              onToggleCompleted={() =>
-                onToggleCompleted({ id, completed: !completed })
-              }
-              onDelete={() => onDeleteTodo(id)}
-            />
+            <TodoItem id={id} text={text} completed={completed} />
           </li>
         );
       })}

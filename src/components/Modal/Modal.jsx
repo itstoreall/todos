@@ -1,37 +1,32 @@
 // Reused Modal
-import { Component } from "react";
-import { createPortal } from "react-dom";
-import "./Modal.scss";
+import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import './Modal.scss';
 
-const reusedModalRoot = document.querySelector("#modal-root");
+const reusedModalRoot = document.querySelector('#modal-root');
 
-export default class Modal extends Component {
-  // addEventListener keydown
-  componentDidMount() {
-    window.addEventListener("keydown", this.handleKeyDown);
-  }
+export default function Modal({ children, onClose }) {
+  // Close by ESC (addEventListener keydown)
+  useEffect(() => {
+    window.addEventListener('keydown', e => {
+      e.code === 'Escape' && onClose();
+    });
+  }, [onClose]);
 
   // removeEventListener keydown
-  componentWillUnmount() {
-    window.removeEventListener("keydown", this.handleKeyDown);
-  }
-
-  // Close by ESC
-  handleKeyDown = (e) => {
-    e.code === "Escape" && this.props.onClose();
-  };
+  // const componentWillUnmount() {
+  //   window.removeEventListener('keydown', handleKeyDown);
+  // }
 
   // Close by Backdrop
-  handleBackdropClick = (e) => {
-    e.currentTarget === e.target && this.props.onClose();
+  const handleBackdropClick = e => {
+    e.currentTarget === e.target && onClose();
   };
 
-  render() {
-    return createPortal(
-      <div className="Modal__backdrop" onClick={this.handleBackdropClick}>
-        <div className="Modal__content">{this.props.children}</div>
-      </div>,
-      reusedModalRoot
-    );
-  }
+  return createPortal(
+    <div className="Modal__backdrop" onClick={handleBackdropClick}>
+      <div className="Modal__content">{children}</div>
+    </div>,
+    reusedModalRoot,
+  );
 }
