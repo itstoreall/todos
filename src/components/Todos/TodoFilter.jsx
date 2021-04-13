@@ -1,23 +1,16 @@
-import React, { useEffect, useRef } from 'react';
-import { connect, useSelector, useDispatch } from 'react-redux';
+import React, { useEffect, useCallback, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { changeFilter, todosSelectors } from '../../redux/todos';
 import { TextField } from '@material-ui/core';
 import './TodosStyles.scss';
 
-// const mapStateToProps = state => ({
-//   value: todosSelectors.getFilter(state),
-// });
-
-// const mapDispatchtoProps = dispatch => ({
-//   onChange: e => dispatch(changeFilter(e.target.value)),
-// });
-
-// export default connect(mapStateToProps, mapDispatchtoProps)(TodoFilter);
-
-const TodoFilter = ({ onChange }) => {
-  // const dispatch = useDispatch();
+export default function TodoFilter() {
+  const dispatch = useDispatch();
   const filterRef = useRef();
   const value = useSelector(todosSelectors.getFilter);
+  const onChange = useCallback(e => dispatch(changeFilter(e.target.value)), [
+    dispatch,
+  ]);
 
   useEffect(() => {
     filterRef.current.focus();
@@ -33,14 +26,7 @@ const TodoFilter = ({ onChange }) => {
         id="outlined-basic"
         label="Filter by name"
         inputRef={filterRef}
-        // variant="outlined"
       />
     </label>
   );
-};
-
-const mapDispatchtoProps = dispatch => ({
-  onChange: e => dispatch(changeFilter(e.target.value)),
-});
-
-export default connect(null, mapDispatchtoProps)(TodoFilter);
+}

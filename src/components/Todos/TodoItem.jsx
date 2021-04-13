@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { todosOperations } from '../../redux/todos';
 import { IconButton } from '@material-ui/core';
 import DeleteTwoToneIcon from '@material-ui/icons/DeleteTwoTone';
@@ -9,6 +9,24 @@ import './TodosStyles.scss';
 const TodoItem = ({ id, text, completed }) => {
   const dispatch = useDispatch();
 
+  // useCallback
+  const deleteTodo = useCallback(
+    () => dispatch(todosOperations.deleteTodo(id)),
+    [dispatch, id],
+  );
+
+  // useCallback
+  const completeTodo = useCallback(
+    () =>
+      dispatch(
+        todosOperations.toggleCompleted({
+          id,
+          completed: !completed,
+        }),
+      ),
+    [dispatch, id, completed],
+  );
+
   return (
     <>
       <label>
@@ -16,14 +34,7 @@ const TodoItem = ({ id, text, completed }) => {
           type="checkbox"
           className="TodoList__checkbox"
           checked={completed}
-          onChange={() =>
-            dispatch(
-              todosOperations.toggleCompleted({
-                id,
-                completed: !completed,
-              }),
-            )
-          }
+          onChange={completeTodo}
           color="primary"
           inputProps={{ 'aria-label': 'secondary checkbox' }}
         />
@@ -32,7 +43,7 @@ const TodoItem = ({ id, text, completed }) => {
       <IconButton
         type="button"
         className="TodoList__btn"
-        onClick={() => dispatch(todosOperations.deleteTodo(id))}
+        onClick={deleteTodo}
         disabled={!completed}
         color="primary"
         aria-label="delete todo"
