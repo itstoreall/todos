@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { todosOperations } from '../../redux/todos';
 import Stats from './TodoStats';
@@ -11,14 +11,16 @@ import Modal from '../Modal';
 import './TodosStyles.scss';
 
 export default function Todos() {
-  const [showModal, setShowModal] = useState();
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(todosOperations.fetchTodos);
   }, [dispatch]);
 
-  const toggleModal = () => setShowModal(!showModal);
+  const toggleModal = useCallback(() => {
+    setShowModal(prevShowModal => !prevShowModal);
+  }, []);
 
   return (
     <>

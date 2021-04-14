@@ -19,6 +19,16 @@
       "text": "Todo 4",
       "completed": false,
       "id": 4
+    },
+    {
+      "text": "Todo 5\n",
+      "completed": false,
+      "id": 5
+    },
+    {
+      "text": "Todo 6",
+      "completed": false,
+      "id": 6
     }
   ]
 }

@@ -6,17 +6,20 @@ import './Modal.scss';
 const reusedModalRoot = document.querySelector('#modal-root');
 
 export default function Modal({ children, onClose }) {
-  // Close by ESC (addEventListener keydown)
+  // Close by ESC
   useEffect(() => {
-    window.addEventListener('keydown', e => {
+    const handleKeyDown = e => {
       e.code === 'Escape' && onClose();
-    });
-  }, [onClose]);
+    };
 
-  // removeEventListener keydown
-  // const componentWillUnmount() {
-  //   window.removeEventListener('keydown', handleKeyDown);
-  // }
+    // componentDidMount()
+    window.addEventListener('keydown', handleKeyDown);
+
+    // componentWillUnmount()
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
 
   // Close by Backdrop
   const handleBackdropClick = e => {
